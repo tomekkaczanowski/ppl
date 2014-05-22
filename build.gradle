@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+
+    compile 'org.codehaus.groovy:groovy-all:2.3.0'
+	compile 'com.google.code.gson:gson:2.2.4'
+}
+
+jar {
+    manifest {
+        attributes("Main-Class": "com.practicalunittesting.ppl.Main")
+    }
+    dependsOn configurations.runtime
+    from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
