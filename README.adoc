@@ -1,6 +1,6 @@
 = PPL
 
-This is my toy project. I try to scratch my own personal itch here. Which means, unless it is also your itch as well ,you won't really benefit from it.
+This is my toy project. I try to scratch my own personal itch here. Which means, unless it is also your itch as well, you won't really benefit from it.
 
 == Stuff used
 Links to some projects/sites that I use during development:
