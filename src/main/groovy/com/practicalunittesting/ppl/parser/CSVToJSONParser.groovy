@@ -9,18 +9,30 @@ class CSVToJSONParser {
         }
         def json = new JsonBuilder()
 
-        json.facts {
-            input.eachLine {
-            String[] tokens = it.split(",");
-                fact {
-                    where tokens[0].trim()
-                    when tokens[1].trim()
-                    who tokens[2].trim()
-                    what tokens[3].trim()
-                }
-            }
+        def facts = []
 
+        input.eachLine {
+            String[] tokens = it.split(",");
+            facts << new Fact(where: tokens[0], when: tokens[1], who: tokens[2], what: tokens[3])
         }
+
+        json.facts (
+            facts.each {
+                fact (
+                "bum" : "cyk"
+                )
+            }
+        )
+//        json.facts {
+//            fact facts.collect {
+//                where: it.where
+//                when: it.when
+//                who: it.who
+//                what: it.what
+//            }
+//        }
         return json;
     }
 }
+
+class Fact { String where; String when; String who; String what }

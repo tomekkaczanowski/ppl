@@ -28,10 +28,10 @@ class CSVToJSONParserTest extends Specification {
 
         then:
         JsonAssert.with(jsonResult)
-                .assertThat('facts.fact.who', Matchers.equalTo("Jan Kowalski"))
-                .assertThat('facts.fact.where', Matchers.equalTo("Geecon 2014"))
-                .assertThat('facts.fact.when', Matchers.equalTo("18.05.2014"))
-                .assertThat('facts.fact.what', Matchers.equalTo("talked about weather"))
+                .assertThat('facts.fact[0].who', Matchers.equalTo("Jan Kowalski"))
+                .assertThat('facts.fact[0].where', Matchers.equalTo("Geecon 2014"))
+                .assertThat('facts.fact[0].when', Matchers.equalTo("18.05.2014"))
+                .assertThat('facts.fact[0].what', Matchers.equalTo("talked about weather"))
         ;
     }
 
