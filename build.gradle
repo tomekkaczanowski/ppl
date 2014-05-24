@@ -9,7 +9,7 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.0'
 	compile 'com.google.code.gson:gson:2.2.4'
 testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
-    testCompile 'com.jayway.jsonpath:json-path:0.9.1'
+    compile 'com.jayway.jsonpath:json-path:0.9.1'
     testCompile 'com.jayway.jsonpath:json-path-assert:0.9.1'
 }
 
