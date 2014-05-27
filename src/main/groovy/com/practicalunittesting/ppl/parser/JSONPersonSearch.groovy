@@ -9,6 +9,10 @@ class JSONPersonSearch {
         def found = json.facts
                 .fact
                 .findAll { it.who == person }
-        return found
+        return found.sort {  a, b ->
+            def aDate =    Date.parse( "dd.MM.yyyy", a.when )
+            def bDate =    Date.parse( "dd.MM.yyyy", b.when )
+            aDate <=> bDate
+        }
     }
 }
