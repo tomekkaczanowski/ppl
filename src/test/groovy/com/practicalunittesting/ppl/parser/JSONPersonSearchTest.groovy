@@ -41,22 +41,14 @@ class JSONPersonSearchTest extends Specification {
         def kowalski = searcher.search(input, "Jan Kowalski")
         def nowak = searcher.search(input, "Adam Nowak")
 
+        println kowalski
+        println nowak
+
         then:
         kowalski != null
-        println kowalski[0]
         kowalski[0].who == "Jan Kowalski"
         kowalski[1].who == "Jan Kowalski"
+        nowak != null
         nowak[0].who == "Adam Nowak"
-        JsonAssert.with(kowalski)
-                .assertThat('who', Matchers.equalTo("Jan Kowalski"))
-                .assertThat('where', Matchers.equalTo("Geecon 2014"))
-                .assertThat('when', Matchers.equalTo("18.05.2014"))
-                .assertThat('what', Matchers.equalTo("talked about weather"));
-
-        JsonAssert.with(nowak)
-                .assertThat('facts.fact[0].who', Matchers.equalTo("Adam Nowak"))
-                .assertThat('facts.fact[0].where', Matchers.equalTo("Geecon 2013"))
-                .assertThat('facts.fact[0].when', Matchers.equalTo("12.05.2013"))
-                .assertThat('facts.fact[0].what', Matchers.equalTo("never met him"))
     }
 }
