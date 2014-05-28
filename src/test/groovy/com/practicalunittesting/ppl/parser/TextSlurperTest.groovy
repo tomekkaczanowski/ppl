@@ -56,4 +56,33 @@ jkow 2015 2
         def geecon2015Facts = result.getFactsForEvent("Geecon 2015")
         geecon2015Facts.size() == 2
     }
+
+    def "should find facts ignoring case"() {
+        given:
+        TextSlurper slurper = new TextSlurper()
+
+        when:
+        def result = slurper.slurp(input)
+
+        then:
+        def nowakFacts = result.getFactsForPerson("adam nowak")
+        nowakFacts.size() == 3
+
+        def geecon2014Facts = result.getFactsForEvent("geecon 2014")
+        geecon2014Facts.size() == 6
+    }
+
+    def "should find facts by regexp"() {
+        given:
+        TextSlurper slurper = new TextSlurper()
+
+        when:
+        def result = slurper.slurp(input)
+
+        then:
+        result.getFactsForPerson("adam").size() == 3
+        result.getFactsForPerson("nowak").size() == 3
+
+        result.getFactsForEvent("geecon 2014").size() == 6
+    }
 }

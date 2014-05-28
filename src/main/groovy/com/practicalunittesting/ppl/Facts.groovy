@@ -14,13 +14,15 @@ class Facts {
 
     Fact[] getFactsForPerson(String person) {
         return facts.findAll { fact ->
-            fact.who == person
+            def who = fact.who.toUpperCase()
+            who == person.toUpperCase() || (who =~ ".*${person.toUpperCase()}.*").matches()
         }
     }
 
     Fact[] getFactsForEvent(String event) {
         return facts.findAll { fact ->
-            fact.where == event
+            def where = fact.where.toUpperCase()
+            where == event.toUpperCase() || (where =~ ".*${event.toUpperCase()}.*").matches()
         }
     }
 
