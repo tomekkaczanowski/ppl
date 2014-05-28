@@ -1,12 +1,13 @@
 package com.practicalunittesting.ppl.parser
 
 import com.practicalunittesting.ppl.Fact
-import groovy.json.JsonBuilder
+import com.practicalunittesting.ppl.Facts
 
-class TextToJSONParser {
-    String parse(String input) {
+class TextSlurper {
+    Facts slurp(String input) {
+        Facts result = new Facts()
         if (input.isEmpty()) {
-            return ""
+            return result;
         }
 
         def facts = []
@@ -20,20 +21,10 @@ class TextToJSONParser {
                 person = parsePerson(it)
             }
             else if (!it.isEmpty()) {
-                facts << new Fact(where: section.where, when: section.when, who: person, what: it)
+                result.add(new Fact(where: section.where, when: section.when, who: person, what: it))
             }
         }
-        def builder = new JsonBuilder()
-
-        builder.facts {
-            fact(
-                    facts.collect{
-                        Fact a -> [where: a.where, when: a.when, who: a.who, what: a.what]
-                    }
-            )
-        }
-        println builder.toPrettyString()
-        return builder.toPrettyString()
+        return result
     }
 
     def parsePerson(String line) {
@@ -63,6 +54,5 @@ class TextToJSONParser {
             this.when = when
             this.where = where
         }
-
     }
 }
