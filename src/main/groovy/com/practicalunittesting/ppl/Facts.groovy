@@ -27,4 +27,20 @@ class Facts {
     boolean hasFacts() {
         return size() != 0
     }
+
+    Set<String> findPeople() {
+        def people = [] as TreeSet
+        facts.each {
+            people << it.who
+        }
+        people
+    }
+
+    Set<String> findEvents() {
+        def events = [] as TreeSet
+        facts.each {
+            events << it.where
+        }
+        events
+    }
 }

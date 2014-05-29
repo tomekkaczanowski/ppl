@@ -33,6 +33,34 @@ _Jan Kowalski
 jkow 2015 1
 jkow 2015 2
 """
+    def "should find unique people"() {
+        given:
+        TextSlurper slurper = new TextSlurper()
+
+        when:
+        def result = slurper.slurp(input)
+
+        then:
+        def people = result.findPeople()
+        people.size() == 3
+        people.contains("Jan Kowalski")
+        people.contains("Jan Kot")
+        people.contains("Adam Nowak")
+    }
+
+    def "should find unique events"() {
+        given:
+        TextSlurper slurper = new TextSlurper()
+
+        when:
+        def result = slurper.slurp(input)
+
+        then:
+        def events = result.findEvents()
+        events.size() == 2
+        events.contains("Geecon 2014")
+        events.contains("Geecon 2015")
+    }
 
     def "should find facts for people and events"() {
         given:
