@@ -5,9 +5,8 @@ import com.practicalunittesting.ppl.Facts
 
 class TextSlurper {
     Facts slurp(String input) {
-        Facts result = new Facts()
         if (input.isEmpty()) {
-            return result;
+            return new Facts();
         }
 
         def facts = []
@@ -21,10 +20,10 @@ class TextSlurper {
                 person = parsePerson(it)
             }
             else if (!it.isEmpty()) {
-                result.add(new Fact(where: section.where, when: section.when, who: person, what: it))
+                facts << new Fact(where: section.where, when: section.when, who: person, what: it)
             }
         }
-        return result
+        new Facts(facts)
     }
 
     def parsePerson(String line) {

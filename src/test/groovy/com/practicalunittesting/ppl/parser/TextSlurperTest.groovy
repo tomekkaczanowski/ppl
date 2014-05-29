@@ -13,7 +13,8 @@ class TextSlurperTest extends Specification {
 
         then:
         result != null
-        !result.hasFacts()
+        result.findPeople().size() == 0
+        result.findEvents().size() == 0
     }
 
     def input = """\
@@ -70,7 +71,6 @@ jkow 2015 2
         def result = slurper.slurp(input)
 
         then:
-        result.hasFacts()
         result.size() == 8
         def kowalskiFacts = result.getFactsForPerson("Jan Kowalski")
         kowalskiFacts.size() == 4
