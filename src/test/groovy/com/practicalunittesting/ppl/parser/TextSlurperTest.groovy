@@ -82,7 +82,10 @@ jkow 2015 2
         then:
         result.getFactsForPerson("adam").size() == 3
         result.getFactsForPerson("nowak").size() == 3
-
-        result.getFactsForEvent("geecon 2014").size() == 6
+        result.getFactsForPerson("ow").size() == 7 // nowak + kowalski
+        result.getFactsForPerson("o").size() == 8 // nowak + kowalski + kot
+        result.getFactsForEvent("2014").size() == 6
+        result.getFactsForEvent("2015").size() == 2
+        result.getFactsForEvent("eeco").size() == 8
     }
 }
