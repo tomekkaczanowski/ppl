@@ -116,4 +116,28 @@ jkow 2015 2
         result.getFactsForEvent("2015").size() == 2
         result.getFactsForEvent("eeco").size() == 8
     }
+
+
+    def mention = """\
+[Geecon 2014, 18.05.2014]
+_Jan Kowalski
+thinks _JanKot and AdamNowak are super
+_Jan Kot
+thinks _JanKowalski is cool
+_Adam Nowak
+thinks _JanKot is weird
+"""
+
+    def "should find mentioned facts"() {
+        given:
+        TextSlurper slurper = new TextSlurper()
+
+        when:
+        def result = slurper.slurp(mention)
+
+        then:
+        result.getFactsForPerson("Adam Nowak").size() == 2
+        result.getFactsForPerson("Jan Kot").size() == 2
+        result.getFactsForPerson("Jan Kowalski").size() == 2
+    }
 }

@@ -110,5 +110,7 @@ jkow 2015 2
             }
         }
         println writer.toString()
+
+        println(new StringTokenizer("mentions _MarylinMonroe, _AmyBamy and _JohnRambo", " ,").collect { it })
     }
 }

@@ -1,6 +1,6 @@
 package com.practicalunittesting.ppl
 
-class Fact { String where; String when; String who; String what
+class Fact { String where; String when; String who; String what; String mentionedPeople
 
     // TODO introduce Event class (where + when)
     void setWhere(String where) {
@@ -20,5 +20,18 @@ class Fact { String where; String when; String who; String what
     // TODO parse looking for people mentioned (and events?!)
     void setWhat(String what) {
         this.what = what.trim()
+        this.mentionedPeople = findMentionedPeople();
+    }
+
+    Set<String> findMentionedPeople() {
+        def tokens = new StringTokenizer(what, " ,").collect { it }
+        def mentionedPeople = [] as TreeSet
+        for (String token : tokens) {
+            if (token.startsWith("_")) {
+                def cleaned = token.replace('_', '').replaceAll(/(?<=[a-z])(?=[A-Z])/) { ' ' + it }
+                mentionedPeople.add(cleaned)
+            }
+        }
+        mentionedPeople
     }
 }
