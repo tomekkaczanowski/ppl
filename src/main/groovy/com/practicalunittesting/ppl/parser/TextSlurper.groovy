@@ -20,10 +20,10 @@ class TextSlurper {
                 person = parsePerson(it)
             }
             else if (!it.isEmpty()) {
-                facts << new Fact(where: section.where, when: section.when, who: person, what: it)
+                facts << new Fact(section.where, section.when, person, it)
             }
         }
-        new Facts(facts)
+        new Facts(facts, true)
     }
 
     def parsePerson(String line) {

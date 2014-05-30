@@ -121,11 +121,12 @@ jkow 2015 2
     def mention = """\
 [Geecon 2014, 18.05.2014]
 _Jan Kowalski
-thinks _JanKot and AdamNowak are super
-_Jan Kot
+thinks about nothing
+_Jan Blah
 thinks _JanKowalski is cool
 _Adam Nowak
-thinks _JanKot is weird
+thinks that life is good
+thinks that _JanKowalski is wise
 """
 
     def "should find mentioned facts"() {
@@ -137,7 +138,7 @@ thinks _JanKot is weird
 
         then:
         result.getFactsForPerson("Adam Nowak").size() == 2
-        result.getFactsForPerson("Jan Kot").size() == 2
-        result.getFactsForPerson("Jan Kowalski").size() == 2
+        result.getFactsForPerson("Jan Blah").size() == 1
+        result.getFactsForPerson("Jan Kowalski").size() == 3
     }
 }
