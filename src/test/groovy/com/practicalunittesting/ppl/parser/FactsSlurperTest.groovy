@@ -2,11 +2,11 @@ package com.practicalunittesting.ppl.parser
 
 import spock.lang.Specification
 
-class TextSlurperTest extends Specification {
+class FactsSlurperTest extends Specification {
 
     def "should not fail with empty input"() {
         given:
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
         when:
         def result = slurper.slurp("")
@@ -36,7 +36,7 @@ jkow 2015 2
 """
     def "should find unique people"() {
         given:
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
         when:
         def result = slurper.slurp(input)
@@ -51,7 +51,7 @@ jkow 2015 2
 
     def "should find unique events"() {
         given:
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
         when:
         def result = slurper.slurp(input)
@@ -65,7 +65,7 @@ jkow 2015 2
 
     def "should find facts for people and events"() {
         given:
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
         when:
         def result = slurper.slurp(input)
@@ -87,7 +87,7 @@ jkow 2015 2
 
     def "should find facts ignoring case"() {
         given:
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
         when:
         def result = slurper.slurp(input)
@@ -102,7 +102,7 @@ jkow 2015 2
 
     def "should find facts by regexp"() {
         given:
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
         when:
         def result = slurper.slurp(input)
@@ -131,7 +131,7 @@ thinks that _JanKowalski is wise
 
     def "should find mentioned facts"() {
         given:
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
         when:
         def result = slurper.slurp(mention)

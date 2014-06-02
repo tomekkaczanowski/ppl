@@ -3,7 +3,7 @@ package com.practicalunittesting.ppl.parser
 import com.practicalunittesting.ppl.Fact
 import com.practicalunittesting.ppl.Facts
 
-class TextSlurper {
+class FactsSlurper {
     Facts slurp(String input) {
         if (input.isEmpty()) {
             return new Facts();

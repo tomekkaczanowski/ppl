@@ -1,7 +1,7 @@
 package com.practicalunittesting.ppl.renderer
 
 import com.practicalunittesting.ppl.Fact
-import com.practicalunittesting.ppl.parser.TextSlurper
+import com.practicalunittesting.ppl.parser.FactsSlurper
 import groovy.xml.MarkupBuilder
 
 class Main {
@@ -27,7 +27,7 @@ jkow 2015 2
     public static void main(String[] args) {
         StringWriter writer = new StringWriter()
 
-        TextSlurper slurper = new TextSlurper()
+        FactsSlurper slurper = new FactsSlurper()
 
 //        def result = slurper.slurp(new File('/home/tomek/data/2013_lipiec.txt').text)
         def result = slurper.slurp(input)
