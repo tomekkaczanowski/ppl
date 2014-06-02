@@ -141,4 +141,8 @@ thinks that _JanKowalski is wise
         result.getFactsForPerson("Jan Blah").size() == 1
         result.getFactsForPerson("Jan Kowalski").size() == 3
     }
+
+    def "should find all facts by people category"() {
+
+    }
 }
